@@ -12,13 +12,18 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentDidMount() {
+    if (this.props.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
   onChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
   onSubmit(e) {
     e.preventDefault();
     const {...user} = this.state;
-    this.props.loginUser(user, null);
+    this.props.loginUser(user, this.props.history);
   }
   render() {
     return (
@@ -66,6 +71,7 @@ class Login extends Component {
 const mapStatesToProps = ({auth}) => ({
   authenticating: auth.authenticating,
   error: auth.loginError,
+  isAuthenticated: auth.isAuthenticated,
 });
 
 export default connect(

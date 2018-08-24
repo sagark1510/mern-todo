@@ -1,10 +1,12 @@
 import * as types from '../actions/types';
+import isEmpty from '../utils/is-empty';
 
 const INITIAL_STATE = {
   registering: false,
   registerError: null,
   loginError: null,
   authenticating: false,
+  isAuthenticated: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,6 +23,12 @@ export default (state = INITIAL_STATE, action) => {
         loginError: state.authenticating && action.error,
         registering: false,
         authenticating: false,
+      };
+    case types.SET_CURRENT_USER:
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: !isEmpty(action.payload),
       };
     default:
       return state;
