@@ -5,13 +5,19 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "client-install": "npm install -prefix client",
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "db": "mongod --dbpath /Users/sagarkhatri/Documents/extras/data/db/",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run db\" \"npm run server\" \"npm run client\""
   },
   "author": "Sagar Khatri",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.9",

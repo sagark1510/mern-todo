@@ -20,7 +20,7 @@ mongoose
 // use routes
 app.use('/api/users', users);
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 app.get('/', (req, res) => res.send('came 1'));
 app.listen(port, () => {
   console.log('Server start on port', port);
