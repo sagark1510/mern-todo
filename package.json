@@ -10,7 +10,8 @@
     "client": "npm start --prefix client",
     "db": "mongod --dbpath /Users/sagarkhatri/Documents/extras/data/db/",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run db\" \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run db\" \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm install && yarn build"
   },
   "author": "Sagar Khatri",
   "license": "MIT",
