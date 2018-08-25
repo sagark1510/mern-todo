@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
 
 const users = require('./server/routes/api/user');
+const todos = require('./server/routes/api/todo');
+const tasks = require('./server/routes/api/task');
 
 const app = express();
 
@@ -26,14 +29,8 @@ require('./server/config/passport')(passport);
 
 // use routes
 app.use('/api/users', users);
-app.use(express.static('client/build'));
-
-if (process.env.NODE_ENV === 'production') {
-  app.get(/^\/(?!api).*/, (req, res) => {
-    // don't serve react app to api routes
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+app.use('/api/todos', todos);
+app.use('/api/tasks', tasks);
 
 const port = process.env.PORT || 5000;
 app.get('/', (req, res) => res.send('came 1'));
