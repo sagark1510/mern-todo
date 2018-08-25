@@ -17,7 +17,10 @@ app.use(bodyParser.json());
 // db config
 const db = require('./server/config/keys').mongoURI;
 mongoose
-  .connect(db)
+  .connect(
+    db,
+    {useNewUrlParser: true},
+  )
   .then(() => console.log('mongodb connected successfully'))
   .catch(e => console.log(e));
 
@@ -33,7 +36,7 @@ app.use('/api/todos', todos);
 app.use('/api/tasks', tasks);
 
 const port = process.env.PORT || 5000;
-app.get('/', (req, res) => res.send('came 1'));
+
 app.listen(port, () => {
   console.log('Server start on port', port);
 });

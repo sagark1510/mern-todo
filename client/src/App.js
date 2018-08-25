@@ -6,6 +6,7 @@ import './App.css';
 import Register from './containers/register';
 import Login from './containers/login';
 import Dashboard from './containers/dashboard';
+import Task from './containers/tasks';
 import Navbar from './components/navbar';
 import store from './Store';
 import {setCurrentUser, logoutUser} from './actions/auth';
@@ -45,6 +46,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/tasks/:todoId" component={Task} />
               </Switch>
             </div>
           </div>
