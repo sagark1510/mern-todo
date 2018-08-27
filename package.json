@@ -10,7 +10,8 @@
     "client": "npm start --prefix client",
     "db": "mongod --dbpath /Users/sagarkhatri/Documents/extras/data/db/",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run db\" \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run db\" \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Sagar Khatri",
   "license": "MIT",
